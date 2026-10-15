@@ -9,6 +9,7 @@ public class OrderService {
 
     public OrderService(PaymentService paymentService) {
         this.paymentService = paymentService;
+        System.out.println("OrderService created");
     }
 
     public void placeOrder() {
