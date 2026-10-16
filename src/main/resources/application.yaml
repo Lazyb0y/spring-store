@@ -1,6 +1,9 @@
 spring:
   application:
     name: store
+mail:
+  host: https://smtp.gmail.com
+  port: 5761
 stripe:
   apiUrl: https://api.stripe.com
   enabled: true
