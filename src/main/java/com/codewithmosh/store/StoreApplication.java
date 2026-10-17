@@ -1,6 +1,7 @@
 package com.codewithmosh.store;
 
 import com.codewithmosh.store.entities.Address;
+import com.codewithmosh.store.entities.Profile;
 import com.codewithmosh.store.entities.Tag;
 import com.codewithmosh.store.entities.User;
 import org.springframework.boot.SpringApplication;
@@ -18,7 +19,13 @@ public class StoreApplication {
 				.email("john@codewithmosh.com")
 				.build();
 
-		user.addTag("tag1");
+		var profile = Profile.builder()
+				.bio("bio")
+				.build();
+
+		user.setProfile(profile);
+		profile.setUser(user);
+
 		System.out.println(user);
 	}
 }
