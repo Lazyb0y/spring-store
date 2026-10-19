@@ -67,4 +67,13 @@ public class UserService {
 
         userRepository.save(user);
     }
+
+    @Transactional
+    public void deleteRelated() {
+        var user = userRepository.findById(1L).orElseThrow();
+        var address = user.getAddresses().getFirst();
+        user.removeAddress(address);
+
+        userRepository.save(user);
+    }
 }
