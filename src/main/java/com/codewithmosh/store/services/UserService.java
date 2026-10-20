@@ -104,4 +104,10 @@ public class UserService {
             u.getAddresses().forEach(System.out::println);
         });
     }
+
+    @Transactional
+    public void printLoyalProfiles() {
+        var profiles = profileRepository.findByLoyaltyPointsGreaterThan(2);
+        profiles.forEach(p -> System.out.println(p.getId()));
+    }
 }
