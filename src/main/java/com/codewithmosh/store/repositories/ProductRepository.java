@@ -13,10 +13,10 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     List<Product> findByName(String name);
     List<Product> findByNameLike(String name);
     List<Product> findByNameNotLike(String name);
+    List<Product> findByNameNotLikeIgnoreCase(String name);
     List<Product> findByNameNotContaining(String name);
-    List<Product> findByNameNotStartingWith(String name);
-    List<Product> findByNameNotEndingWith(String name);
-    List<Product> findByNameNotEndingWithIgnoreCase(String name);
+    List<Product> findByNameEndingWith(String name);
+    List<Product> findByNameEndingWithIgnoreCase(String name);
 
     // Numbers
     List<Product> findByPrice(BigDecimal price);
