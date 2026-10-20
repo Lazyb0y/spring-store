@@ -56,6 +56,6 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     @Query("UPDATE Product p SET p.price = :newPrice WHERE p.category.id = :categoryId")
     void updatePriceByCategory(BigDecimal newPrice, Byte categoryId);
 
-    @Query("SELECT p.id, p.name FROM Product p WHERE p.category = :category")
-    List<ProductSummary> findByCategory(@Param("category") Category category);
+    @Query("SELECT new com.codewithmosh.store.dtos.ProductSummaryDTO(p.id, p.name) FROM Product p WHERE p.category = :category")
+    List<ProductSummaryDTO> findByCategory(@Param("category") Category category);
 }
