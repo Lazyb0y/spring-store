@@ -1,7 +1,6 @@
 package com.codewithmosh.store.services;
 
 import com.codewithmosh.store.entities.Address;
-import com.codewithmosh.store.entities.Product;
 import com.codewithmosh.store.entities.User;
 import com.codewithmosh.store.repositories.*;
 import jakarta.persistence.EntityManager;
@@ -83,5 +82,10 @@ public class UserService {
     @Transactional
     public void manageProducts() {
         productRepository.deleteById(4L);
+    }
+
+    @Transactional
+    public void updateProductPrices() {
+        productRepository.updatePriceByCategory(BigDecimal.valueOf(10), (byte)1);
     }
 }
