@@ -1,7 +1,9 @@
 package com.codewithmosh.store.repositories;
 
 import com.codewithmosh.store.entities.Product;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -37,4 +39,10 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
     // Limit (Top/First)
     List<Product> findTop5ByNameOrderByPrice(String name);
+
+    // Find products whose prices are in a given range and sort by name
+    // SQL or JPQL query
+    @Query(value = "SELECT * FROM products p WHERE p.price BETWEEN :min AND :max ORDER BY p.name", nativeQuery = true)
+    List<Product> findProducts(@Param("min") BigDecimal min, @Param("max") BigDecimal max);
+
 }
