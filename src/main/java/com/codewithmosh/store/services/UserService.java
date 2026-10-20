@@ -1,7 +1,6 @@
 package com.codewithmosh.store.services;
 
 import com.codewithmosh.store.entities.Address;
-import com.codewithmosh.store.entities.Category;
 import com.codewithmosh.store.entities.User;
 import com.codewithmosh.store.repositories.*;
 import jakarta.persistence.EntityManager;
@@ -107,7 +106,7 @@ public class UserService {
 
     @Transactional
     public void printLoyalProfiles() {
-        var profiles = profileRepository.findByLoyaltyPointsGreaterThanOrderByUserEmail(2);
+        var profiles = profileRepository.findLoyalProfiles(2);
         profiles.forEach(p -> System.out.println(p.getId() + ": " + p.getUser().getEmail()));
     }
 }
