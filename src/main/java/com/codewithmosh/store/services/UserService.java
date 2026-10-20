@@ -107,6 +107,6 @@ public class UserService {
     @Transactional
     public void printLoyalProfiles() {
         var profiles = profileRepository.findLoyalProfiles(2);
-        profiles.forEach(p -> System.out.println(p.getId() + ": " + p.getUser().getEmail()));
+        profiles.forEach(p -> System.out.println(p.getId() + ": " + p.getEmail()));
     }
 }
