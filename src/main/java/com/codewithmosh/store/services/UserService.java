@@ -82,8 +82,6 @@ public class UserService {
 
     @Transactional
     public void manageProducts() {
-        var user = userRepository.findById(4L).orElseThrow();
-        var products = productRepository.findAll();
-        products.forEach(user::addFavoriteProduct);
+        productRepository.deleteById(4L);
     }
 }
