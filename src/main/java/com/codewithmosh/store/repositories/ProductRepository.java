@@ -6,6 +6,7 @@ import com.codewithmosh.store.entities.Category;
 import com.codewithmosh.store.entities.Product;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
@@ -46,8 +47,8 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
     // Find products whose prices are in a given range and sort by name
     // SQL or JPQL query
-    @Query("SELECT p FROM Product p JOIN p.category WHERE p.price BETWEEN :min AND :max ORDER BY p.name")
-    List<Product> findProducts(@Param("min") BigDecimal min, @Param("max") BigDecimal max);
+    @Procedure("findProductsByPrice")
+    List<Product> findProducts(BigDecimal min, BigDecimal max);
 
     @Query("SELECT COUNT(*) FROM Product p WHERE p.price BETWEEN :min AND :max")
     Long countProducts(@Param("min") BigDecimal min, @Param("max") BigDecimal max);
